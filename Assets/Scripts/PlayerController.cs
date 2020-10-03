@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 	private float movementX;
 	private float movementY;
 	
+	 public static float     bottomY = -9.5f;
+	
     
     void Start()
     {
@@ -29,6 +31,17 @@ public class PlayerController : MonoBehaviour
    	movementX = movementVector.x;
    	movementY = movementVector.y;
    }
+   
+   
+    void Update()
+    {
+        if (transform.position.y < bottomY) {
+            Destroy( this.gameObject );                                     
+            
+      
+        }
+    }
+   
    
    
       void FixedUpdate()
