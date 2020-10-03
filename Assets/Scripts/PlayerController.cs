@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerController : MonoBehaviour
@@ -36,10 +37,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (transform.position.y < bottomY) {
-            Destroy( this.gameObject );                                     
+            SceneManager.LoadScene( "Scene_0" );                                   
             
-      
         }
+        
+        
     }
    
    
