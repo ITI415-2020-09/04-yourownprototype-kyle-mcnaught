@@ -62,5 +62,9 @@ public class PlayerController : MonoBehaviour
       	
       
    }
+   if(other.gameObject.CompareTag("Finish"))
+   {
+      	Destroy( this.gameObject );
+   }
    }
 }
