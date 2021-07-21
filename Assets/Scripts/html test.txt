@@ -1,0 +1,33 @@
+<html>
+   <head>
+      <p>
+         <title>Foo</title>
+         <script rel="stylesheet" href="main.css">
+      </p>
+   </head>
+   <body>
+      <div class="container">
+         <div id="row">
+            <div class="col-12">
+               <h1>Hello World
+            </div>
+         </div>
+         <div id="row">
+            <sidebar class="col-2">
+               Sidebar
+            </sidebar>
+            <main class="col-10">
+               Main content area
+            
+         </div>
+         <div id="row">
+            <div class="col-12">
+               Footer Area
+            </div>
+         </div>
+      </div>
+   </body>
+   <body>
+      copyright 2018
+   </body>
+</html>

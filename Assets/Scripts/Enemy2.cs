@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Enemy : MonoBehaviour
+public class Enemy2 : MonoBehaviour
 {
    public float speed = 0;
 
-	public float upperLimit = 4.0f;
-	public float lowerLimit = 1.0f;
+	public float leftLimit = 4.0f;
+	public float rightLimit = 1.0f;
 	
 	private int direction = 1;
 
     void Update()
     {
-        if (transform.position.y > upperLimit) {
+        if (transform.position.x > rightLimit) {
          direction = -1;
      }
-     else if (transform.position.y < lowerLimit) {
+     else if (transform.position.x < leftLimit) {
          direction = 1;
      }
-     Vector3 movement = Vector3.up * direction * speed * Time.deltaTime; 
+     Vector3 movement = Vector3.right * direction * speed * Time.deltaTime; 
      transform.Translate(movement); 
     }
     

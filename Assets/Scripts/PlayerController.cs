@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
 {
 
 	public float speed = 0;
+
+    public float bounce = 20;
+
 	public TextMeshProUGUI countText;
 	public GameObject winTextObject;
 	
@@ -18,12 +21,21 @@ public class PlayerController : MonoBehaviour
 	private float movementX;
 	private float movementY;
 	
-	 public static float     bottomY = -9.5f;
+	public static float     bottomY = -9.5f;
+
+    private string currentscene = "Scene_0";
 	
+    void Awake(){
+        if(count > 0){
+
+            count = count;
+        }
+    }
     
     void Start()
     {
-       rb = GetComponent<Rigidbody>();    
+       rb = GetComponent<Rigidbody>();  
+
         count = 0;
         
         SetCountText();
@@ -43,25 +55,21 @@ public class PlayerController : MonoBehaviour
    {
    	countText.text = "Score: " + count.ToString();
    	}
-   
+    
    
     void Update()
     {
         if (transform.position.y < bottomY) {
-            SceneManager.LoadScene( "Scene_0" );                                   
-            
+              SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);                           
         }
-        
-        
     }
-   
-   
    
       void FixedUpdate()
    {
    	Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
    
    	rb.AddForce(movement * speed);
+
    }
    
     private void OnTriggerEnter(Collider other)
@@ -77,8 +85,20 @@ public class PlayerController : MonoBehaviour
    }
    if(other.gameObject.CompareTag("Finish"))
    {
-      	Destroy( this.gameObject );
       	winTextObject.SetActive(true);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
    }
+    if (other.gameObject.CompareTag("Spring")){
+
+        this.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up*bounce*speed);
+
+    }
+
+    if(other.gameObject.CompareTag("Spike"))
+   {
+      	SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
+    
+   }
+
    }
 }

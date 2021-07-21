@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Coin
   - Enemy
+  - Spring
+  - Spike
   layers:
   - Default
   - TransparentFX
